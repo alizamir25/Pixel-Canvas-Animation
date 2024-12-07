@@ -1,4 +1,4 @@
-:root {
+:root{
     --space: 1rem;
     --bg: #09090b;
     --fg: #e3e3e3;
@@ -8,21 +8,21 @@
     --ease-out: cubic-bezier(0.5, 1, 0.89, 1);
     --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   }
-  * {
+  *{
     box-sizing: border-box;
   }
   height,
-  body {
+  body{
     height: 100%;
   }
-  body {
+  body{
     display: grid;
     color: var(--fg);
     background: var(--bg);
     padding: var(--space);
     min-height: 100vh;
   }
-  main {
+  main{
     display: grid;
     grid-template-columns: repeat(var(--count, 1), 1fr);
     gap: var(--space);
