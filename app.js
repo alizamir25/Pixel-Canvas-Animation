@@ -32,28 +32,23 @@ class Pixel{
         this.size
       );
     }
-    appear() {
-      this.isIdle = false;
-  
-      if (this.counter <= this.delay) {
-        this.counter += this.counterStep;
+    appear(){
+      this.isIdle=false;
+      if (this.counter<=this.delay){
+        this.counter+=this.counterStep;
         return;
       }
-  
-      if (this.size >= this.maxSize) {
-        this.isShimmer = true;
+      if (this.size>=this.maxSize){
+        this.isShimmer=true;
       }
-  
-      if (this.isShimmer) {
+      if(this.isShimmer){
         this.shimmer();
-      } else {
-        this.size += this.sizeStep;
+      } else{
+        this.size+=this.sizeStep;
       }
-  
       this.draw();
     }
-  
-    disappear() {
+    disappear(){
       this.isShimmer = false;
       this.counter = 0;
   
