@@ -66,49 +66,42 @@ class Pixel{
       } else if (this.size<=this.minSize){
         this.isReverse=false;
       }
-  
-      if (this.isReverse) {
-        this.size -= this.speed;
-      } else {
-        this.size += this.speed;
+      if (this.isReverse){
+        this.size-=this.speed;
+      } else{
+        this.size+=this.speed;
       }
     }
   }
-  
-  class PixelCanvas extends HTMLElement {
-    static register(tag = "pixel-canvas") {
+  class PixelCanvas extends HTMLElement{
+    static register(tag="pixel-canvas"){
       if ("customElements" in window) {
         customElements.define(tag, this);
       }
     }
-  
-    static css = `
-      :host {
+    static css=`
+      :host{
         display: grid;
         inline-size: 100%;
         block-size: 100%;
         overflow: hidden;
       }
     `;
-  
-    get colors() {
-      return this.dataset.colors?.split(",") || ["#f8fafc", "#f1f5f9", "#cbd5e1"];
+    get colors(){
+      return this.dataset.colors?.split(",")||["#f8fafc", "#f1f5f9", "#cbd5e1"];
     }
-  
-    get gap() {
-      const value = this.dataset.gap || 5;
-      const min = 4;
-      const max = 50;
-  
-      if (value <= min) {
+    get gap(){
+      const value=this.dataset.gap||5;
+      const min=4;
+      const max=50;
+      if (value<=min){
         return min;
-      } else if (value >= max) {
+      } else if (value>=max){
         return max;
-      } else {
+      } else{
         return parseInt(value);
       }
     }
-  
     get speed() {
       const value = this.dataset.speed || 35;
       const min = 0;
