@@ -185,52 +185,41 @@ class Pixel{
       this.canvas.style.height=`${height}px`;
       this.createPixels();
     }
-  
     getDistanceToCanvasCenter(x, y) {
-      const dx = x - this.canvas.width / 2;
-      const dy = y - this.canvas.height / 2;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-  
+      const dx=x-this.canvas.width/2;
+      const dy=y-this.canvas.height/2;
+      const distance=Math.sqrt(dx*dx+dy*dy);
       return distance;
     }
-  
-    createPixels() {
-      for (let x = 0; x < this.canvas.width; x += this.gap) {
-        for (let y = 0; y < this.canvas.height; y += this.gap) {
-          const color = this.colors[
-            Math.floor(Math.random() * this.colors.length)
+    createPixels(){
+      for (let x=0; x<this.canvas.width; x+=this.gap) {
+        for (let y=0; y<this.canvas.height; y+=this.gap) {
+          const color=this.colors[
+            Math.floor(Math.random()*this.colors.length)
           ];
-          const delay = this.reducedMotion
+          const delay=this.reducedMotion
             ? 0
             : this.getDistanceToCanvasCenter(x, y);
-  
           this.pixels.push(
             new Pixel(this.canvas, this.ctx, x, y, color, this.speed, delay)
           );
         }
       }
     }
+    animate(fnName){
+      this.animation=requestAnimationFrame(()=>this.animate(fnName));
   
-    animate(fnName) {
-      this.animation = requestAnimationFrame(() => this.animate(fnName));
-  
-      const timeNow = performance.now();
-      const timePassed = timeNow - this.timePrevious;
-  
-      if (timePassed < this.timeInterval) return;
-  
-      this.timePrevious = timeNow - (timePassed % this.timeInterval);
-  
+      const timeNow=performance.now();
+      const timePassed=timeNow-this.timePrevious;
+      if (timePassed<this.timeInterval) return;
+      this.timePrevious=timeNow-(timePassed%this.timeInterval);
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  
-      for (let i = 0; i < this.pixels.length; i++) {
+      for (let i=0;i<this.pixels.length;i++){
         this.pixels[i][fnName]();
       }
-  
-      if (this.pixels.every((pixel) => pixel.isIdle)) {
+      if (this.pixels.every((pixel)=>pixel.isIdle)){
         cancelAnimationFrame(this.animation);
       }
     }
   }
-  
   PixelCanvas.register();
