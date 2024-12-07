@@ -102,41 +102,35 @@ class Pixel{
         return parseInt(value);
       }
     }
-    get speed() {
-      const value = this.dataset.speed || 35;
-      const min = 0;
-      const max = 100;
-      const throttle = 0.001;
-  
-      if (value <= min || this.reducedMotion) {
+    get speed(){
+      const value=this.dataset.speed||35;
+      const min=0;
+      const max=100;
+      const throttle=0.001;
+      if (value<=min||this.reducedMotion){
         return min;
-      } else if (value >= max) {
-        return max * throttle;
-      } else {
-        return parseInt(value) * throttle;
+      } else if (value>=max){
+        return max*throttle;
+      } else{
+        return parseInt(value)*throttle;
       }
     }
-  
-    get noFocus() {
+    get noFocus(){
       return this.hasAttribute("data-no-focus");
     }
-  
-    connectedCallback() {
-      const canvas = document.createElement("canvas");
-      const sheet = new CSSStyleSheet();
-  
-      this._parent = this.parentNode;
-      this.shadowroot = this.attachShadow({ mode: "open" });
-  
+    connectedCallback(){
+      const canvas=document.createElement("canvas");
+      const sheet=new CSSStyleSheet();
+      this._parent=this.parentNode;
+      this.shadowroot=this.attachShadow({ mode: "open" });
       sheet.replaceSync(PixelCanvas.css);
-  
-      this.shadowroot.adoptedStyleSheets = [sheet];
+      this.shadowroot.adoptedStyleSheets=[sheet];
       this.shadowroot.append(canvas);
-      this.canvas = this.shadowroot.querySelector("canvas");
-      this.ctx = this.canvas.getContext("2d");
-      this.timeInterval = 1000 / 60;
-      this.timePrevious = performance.now();
-      this.reducedMotion = window.matchMedia(
+      this.canvas=this.shadowroot.querySelector("canvas");
+      this.ctx=this.canvas.getContext("2d");
+      this.timeInterval=1000/60;
+      this.timePrevious=performance.now();
+      this.reducedMotion=window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
   
