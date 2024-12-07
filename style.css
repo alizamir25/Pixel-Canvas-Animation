@@ -8,16 +8,13 @@
     --ease-out: cubic-bezier(0.5, 1, 0.89, 1);
     --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   }
-  
   * {
     box-sizing: border-box;
   }
-  
   height,
   body {
     height: 100%;
   }
-  
   body {
     display: grid;
     color: var(--fg);
@@ -25,26 +22,21 @@
     padding: var(--space);
     min-height: 100vh;
   }
-  
   main {
     display: grid;
     grid-template-columns: repeat(var(--count, 1), 1fr);
     gap: var(--space);
     margin: auto;
     inline-size: min(var(--max, 15rem), 100%);
-  
     @media (min-width: 25rem) {
       --count: 2;
       --max: 30rem;
     }
-    
-  
     @media (min-width: 45rem) {
       --count: 4;
       --max: 60rem;
     }
   }
-  
   .card {
     position: relative;
     overflow: hidden;
@@ -56,7 +48,6 @@
     isolation: isolate;
     transition: border-color 200ms var(--ease-out);
     user-select: none;
-  
     &::before {
       content: "";
       position: absolute;
@@ -70,7 +61,6 @@
       box-shadow: var(--bg) -0.5cqi 0.5cqi 2.5cqi inset;
       transition: opacity 900ms var(--ease-out);
     }
-  
     &::after {
       content: "";
       position: absolute;
@@ -81,11 +71,9 @@
       opacity: 0;
       transition: opacity 800ms var(--ease-out);
     }
-  
     > * {
       grid-area: card;
     }
-  
     svg {
       position: relative;
       z-index: 1;
@@ -95,31 +83,25 @@
       transition: 300ms var(--ease-out);
       transition-property: color, scale;
     }
-  
     button {
       opacity: 0;
     }
-  
     &:focus-within {
       outline: 5px auto Highlight;
       outline: 5px auto -webkit-focus-ring-color;
     }
-  
     &:where(:hover, :focus-within) {
       border-color: var(--active-color, var(--fg));
       transition: border-color 800ms var(--ease-in-out);
     }
-  
     &:where(:hover, :focus-within) svg {
       color: var(--active-color, var(--fg));
       scale: 1.1;
       transition: 300ms var(--ease-in-out);
     }
-  
     &:where(:hover, :focus-within)::before {
       opacity: 0;
     }
-  
     &:where(:hover, :focus-within)::after {
       opacity: 1;
     }
