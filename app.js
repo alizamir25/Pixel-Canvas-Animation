@@ -208,7 +208,6 @@ class Pixel{
     }
     animate(fnName){
       this.animation=requestAnimationFrame(()=>this.animate(fnName));
-  
       const timeNow=performance.now();
       const timePassed=timeNow-this.timePrevious;
       if (timePassed<this.timeInterval) return;
