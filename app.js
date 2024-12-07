@@ -133,70 +133,56 @@ class Pixel{
       this.reducedMotion=window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
-  
       this.init();
-      this.resizeObserver = new ResizeObserver(() => this.init());
+      this.resizeObserver=new ResizeObserver(()=>this.init());
       this.resizeObserver.observe(this);
-  
       this._parent.addEventListener("mouseenter", this);
       this._parent.addEventListener("mouseleave", this);
-  
-      if (!this.noFocus) {
+      if (!this.noFocus){
         this._parent.addEventListener("focusin", this);
         this._parent.addEventListener("focusout", this);
       }
     }
-  
-    disconnectedCallback() {
+    disconnectedCallback(){
       this.resizeObserver.disconnect();
       this._parent.removeEventListener("mouseenter", this);
       this._parent.removeEventListener("mouseleave", this);
-  
-      if (!this.noFocus) {
+      if (!this.noFocus){
         this._parent.removeEventListener("focusin", this);
         this._parent.removeEventListener("focusout", this);
       }
-  
       delete this._parent;
     }
-  
-    handleEvent(event) {
+    handleEvent(event){
       this[`on${event.type}`](event);
     }
-  
-    onmouseenter() {
+    onmouseenter(){
       this.handleAnimation("appear");
     }
-  
-    onmouseleave() {
+    onmouseleave(){
       this.handleAnimation("disappear");
     }
-  
-    onfocusin(e) {
+    onfocusin(e){
       if (e.currentTarget.contains(e.relatedTarget)) return;
       this.handleAnimation("appear");
     }
-  
-    onfocusout(e) {
+    onfocusout(e){
       if (e.currentTarget.contains(e.relatedTarget)) return;
       this.handleAnimation("disappear");
     }
-  
-    handleAnimation(name) {
+    handleAnimation(name){
       cancelAnimationFrame(this.animation);
-      this.animation = this.animate(name);
+      this.animation=this.animate(name);
     }
-  
-    init() {
-      const rect = this.getBoundingClientRect();
-      const width = Math.floor(rect.width);
-      const height = Math.floor(rect.height);
-  
-      this.pixels = [];
-      this.canvas.width = width;
-      this.canvas.height = height;
-      this.canvas.style.width = `${width}px`;
-      this.canvas.style.height = `${height}px`;
+    init(){
+      const rect=this.getBoundingClientRect();
+      const width=Math.floor(rect.width);
+      const height=Math.floor(rect.height);
+      this.pixels=[];
+      this.canvas.width=width;
+      this.canvas.height=height;
+      this.canvas.style.width=`${width}px`;
+      this.canvas.style.height=`${height}px`;
       this.createPixels();
     }
   
