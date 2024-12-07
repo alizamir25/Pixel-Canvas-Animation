@@ -28,16 +28,16 @@
     gap: var(--space);
     margin: auto;
     inline-size: min(var(--max, 15rem), 100%);
-    @media (min-width: 25rem) {
+    @media (min-width: 25rem){
       --count: 2;
       --max: 30rem;
     }
-    @media (min-width: 45rem) {
+    @media (min-width: 45rem){
       --count: 4;
       --max: 60rem;
     }
   }
-  .card {
+  .card{
     position: relative;
     overflow: hidden;
     display: grid;
@@ -48,7 +48,7 @@
     isolation: isolate;
     transition: border-color 200ms var(--ease-out);
     user-select: none;
-    &::before {
+    &::before{
       content: "";
       position: absolute;
       inset: 0;
@@ -61,7 +61,7 @@
       box-shadow: var(--bg) -0.5cqi 0.5cqi 2.5cqi inset;
       transition: opacity 900ms var(--ease-out);
     }
-    &::after {
+    &::after{
       content: "";
       position: absolute;
       inset: 0;
@@ -71,10 +71,10 @@
       opacity: 0;
       transition: opacity 800ms var(--ease-out);
     }
-    > * {
+    >*{
       grid-area: card;
     }
-    svg {
+    svg{
       position: relative;
       z-index: 1;
       width: 30%;
@@ -83,26 +83,26 @@
       transition: 300ms var(--ease-out);
       transition-property: color, scale;
     }
-    button {
+    button{
       opacity: 0;
     }
-    &:focus-within {
+    &:focus-within{
       outline: 5px auto Highlight;
       outline: 5px auto -webkit-focus-ring-color;
     }
-    &:where(:hover, :focus-within) {
+    &:where(:hover, :focus-within){
       border-color: var(--active-color, var(--fg));
       transition: border-color 800ms var(--ease-in-out);
     }
-    &:where(:hover, :focus-within) svg {
+    &:where(:hover, :focus-within)svg{
       color: var(--active-color, var(--fg));
       scale: 1.1;
       transition: 300ms var(--ease-in-out);
     }
-    &:where(:hover, :focus-within)::before {
+    &:where(:hover, :focus-within)::before{
       opacity: 0;
     }
-    &:where(:hover, :focus-within)::after {
+    &:where(:hover, :focus-within)::after{
       opacity: 1;
     }
   }
