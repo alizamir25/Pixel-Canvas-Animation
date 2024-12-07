@@ -19,11 +19,9 @@ class Pixel{
       this.isReverse=false;
       this.isShimmer=false;
     }
-  
-    getRandomValue(min, max) {
-      return Math.random() * (max - min) + min;
+    getRandomValue(min, max){
+      return Math.random()*(max-min)+min;
     }
-  
     draw() {
       const centerOffset = this.maxSizeInteger * 0.5 - this.size * 0.5;
   
