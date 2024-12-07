@@ -49,24 +49,22 @@ class Pixel{
       this.draw();
     }
     disappear(){
-      this.isShimmer = false;
-      this.counter = 0;
+      this.isShimmer=false;
+      this.counter=0;
   
-      if (this.size <= 0) {
-        this.isIdle = true;
+      if (this.size<=0){
+        this.isIdle=true;
         return;
       } else {
-        this.size -= 0.1;
+        this.size-=0.1;
       }
-  
       this.draw();
     }
-  
-    shimmer() {
-      if (this.size >= this.maxSize) {
-        this.isReverse = true;
-      } else if (this.size <= this.minSize) {
-        this.isReverse = false;
+    shimmer(){
+      if (this.size>=this.maxSize){
+        this.isReverse=true;
+      } else if (this.size<=this.minSize){
+        this.isReverse=false;
       }
   
       if (this.isReverse) {
