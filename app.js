@@ -185,15 +185,15 @@ class Pixel{
       this.canvas.style.height=`${height}px`;
       this.createPixels();
     }
-    getDistanceToCanvasCenter(x, y) {
+    getDistanceToCanvasCenter(x, y){
       const dx=x-this.canvas.width/2;
       const dy=y-this.canvas.height/2;
       const distance=Math.sqrt(dx*dx+dy*dy);
       return distance;
     }
     createPixels(){
-      for (let x=0; x<this.canvas.width; x+=this.gap) {
-        for (let y=0; y<this.canvas.height; y+=this.gap) {
+      for (let x=0; x<this.canvas.width; x+=this.gap){
+        for (let y=0; y<this.canvas.height; y+=this.gap){
           const color=this.colors[
             Math.floor(Math.random()*this.colors.length)
           ];
