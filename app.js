@@ -22,18 +22,16 @@ class Pixel{
     getRandomValue(min, max){
       return Math.random()*(max-min)+min;
     }
-    draw() {
-      const centerOffset = this.maxSizeInteger * 0.5 - this.size * 0.5;
-  
-      this.ctx.fillStyle = this.color;
+    draw(){
+      const centerOffset=this.maxSizeInteger*0.5-this.size*0.5;
+      this.ctx.fillStyle=this.color;
       this.ctx.fillRect(
-        this.x + centerOffset,
-        this.y + centerOffset,
+        this.x+centerOffset,
+        this.y+centerOffset,
         this.size,
         this.size
       );
     }
-  
     appear() {
       this.isIdle = false;
   
